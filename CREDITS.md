@@ -6,7 +6,7 @@
 |---|---|---|
 | Marina Bay Sands | Diego Delso | CC BY-SA 4.0 |
 | Supertree Grove (กลางคืน) | Kanzcech | CC BY-SA 4.0 |
-| Supertree Grove (กลางวัน) | Johan Jönsson (Julle) | CC BY-SA 4.0 |
+| Gardens by the Bay (ยามเช้า) | DChai21 | CC BY 2.0 |
 | Merlion | Dietmar Rabich | CC BY-SA 4.0 |
 | Orchard Road | Sgconlaw | CC BY-SA 4.0 |
 | Jewel Changi, Chinatown | kallerna | CC BY-SA 4.0 |
