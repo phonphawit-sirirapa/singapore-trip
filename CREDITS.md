@@ -17,6 +17,7 @@
 | Rasapura Masters | RAGURAM RAMESHKUMAR | CC BY-SA 4.0 |
 | สะเต๊ะ | Ypsilon from Finland | CC0 |
 | Old Hill Street Police Station | GoAheadFan95 | CC BY-SA 4.0 |
+| บักกุ๊ดเต๋สไตล์ Klang (รูปตัวอย่าง) | Jpatokal | CC BY-SA 3.0 |
 
 ใบอนุญาต CC BY-SA 4.0: https://creativecommons.org/licenses/by-sa/4.0/
 
