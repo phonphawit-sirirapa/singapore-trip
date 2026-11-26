@@ -1,0 +1,229 @@
+<!doctype html>
+<html lang="th">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Singapore 24–27 พ.ย. 69</title>
+<meta name="claude:viewport-fit-sides" content="cover">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Mitr:wght@300;400;500;600&family=Noto+Sans+Thai:wght@400;500;600&family=IBM+Plex+Mono:wght@500&display=swap">
+<style>
+/* Layout: soft hero, then one timeline per day; places carry a photo, meals carry their restaurant cards inline */
+:root {
+  --bg: #fdf8f8; --surface: #ffffff; --fg: #2a1c1f; --muted: #7b6a6e; --line: #f0e1e3;
+  --red: #d7263d; --red-soft: #fde6e9; --pink: #f6c9d0; --teal: #0f7b76; --teal-soft: #e0f2f0;
+  --gold: #a86b00; --gold-soft: #fff1d6; --shadow: 0 1px 2px rgba(80,20,30,.06), 0 6px 18px rgba(80,20,30,.07);
+  --display: "Mitr", "Noto Sans Thai", system-ui, sans-serif;
+  --body: "Noto Sans Thai", system-ui, sans-serif;
+  --mono: "IBM Plex Mono", ui-monospace, monospace;
+}
+@media (prefers-color-scheme: dark) { :root:not([data-theme="light"]) {
+  --bg: #171113; --surface: #221a1c; --fg: #f5ecec; --muted: #b3a2a5; --line: #3a2d30;
+  --red: #ff5f73; --red-soft: #3b1b21; --pink: #5a2a33; --teal: #52c8c0; --teal-soft: #15302e;
+  --gold: #f0b75a; --gold-soft: #33270f; --shadow: 0 1px 2px rgba(0,0,0,.3), 0 6px 18px rgba(0,0,0,.25); color-scheme: dark } }
+:root[data-theme="dark"] {
+  --bg: #171113; --surface: #221a1c; --fg: #f5ecec; --muted: #b3a2a5; --line: #3a2d30;
+  --red: #ff5f73; --red-soft: #3b1b21; --pink: #5a2a33; --teal: #52c8c0; --teal-soft: #15302e;
+  --gold: #f0b75a; --gold-soft: #33270f; --shadow: 0 1px 2px rgba(0,0,0,.3), 0 6px 18px rgba(0,0,0,.25); color-scheme: dark }
+* { box-sizing: border-box; }
+body { margin: 0; }
+img { max-width: 100%; }
+body { background: var(--bg); color: var(--fg); font-family: var(--body); font-size: 15px; line-height: 1.65; }
+.wrap { max-width: 760px; margin: 0 auto; padding-block: 28px 64px;
+  padding-left: max(16px, env(safe-area-inset-left, 0px)); padding-right: max(16px, env(safe-area-inset-right, 0px)); }
+
+.hero { border-radius: 24px; padding: 34px 26px 26px;
+  background: radial-gradient(120% 90% at 100% 0%, var(--pink) 0%, transparent 55%), radial-gradient(90% 80% at 0% 100%, var(--teal-soft) 0%, transparent 60%), var(--surface);
+  box-shadow: var(--shadow); }
+.hero .eyebrow { font-family: var(--display); color: var(--teal); font-size: 16px; margin: 0; }
+.hero h1 { font-family: var(--display); font-weight: 600; font-size: clamp(48px, 12vw, 80px); line-height: .95; color: var(--red); margin: 6px 0 0; letter-spacing: -.02em; }
+.facts { display: flex; flex-wrap: wrap; gap: 8px; margin: 18px 0 0; padding: 0; list-style: none; }
+.facts li { background: var(--surface); border: 1px solid var(--line); border-radius: 999px; padding: 4px 12px; font-size: 13px; }
+.facts b { font-weight: 600; }
+nav { display: flex; flex-wrap: wrap; gap: 8px; margin: 16px 0 0; }
+nav a { font-family: var(--display); font-size: 14px; text-decoration: none; color: var(--fg); padding: 6px 14px; border-radius: 10px; background: var(--red-soft); }
+nav a:hover, nav a:focus-visible { background: var(--red); color: #fff; outline: none; }
+
+section { margin-top: 44px; scroll-margin-top: 16px; }
+.dayhead { display: flex; align-items: baseline; gap: 12px; flex-wrap: wrap; border-bottom: 2px solid var(--red); padding-bottom: 8px; }
+.dayhead .n { font-family: var(--display); font-size: 14px; color: #fff; background: var(--red); border-radius: 8px; padding: 2px 10px; }
+.dayhead h2 { font-family: var(--display); font-weight: 500; font-size: 22px; margin: 0; text-wrap: balance; flex: 1 1 240px; min-width: 0; }
+.dayhead .date { font-family: var(--mono); font-size: 13px; color: var(--muted); }
+.note { font-size: 13px; color: var(--muted); margin: 10px 0 0; }
+
+ol.tl { list-style: none; margin: 14px 0 0; padding: 0; }
+.tl > li { display: grid; grid-template-columns: 92px 1fr; gap: 16px; padding: 14px 0; border-bottom: 1px dashed var(--line); }
+.tl > li:last-child { border-bottom: 0; }
+.time { font-family: var(--mono); font-size: 13px; color: var(--teal); font-variant-numeric: tabular-nums; padding-top: 2px; }
+.what { min-width: 0; display: grid; gap: 6px; justify-items: start; }
+.what h3 { font-family: var(--display); font-weight: 500; font-size: 17px; margin: 0; }
+.what p { margin: 0; color: var(--muted); font-size: 14px; }
+.what ul { margin: 0; padding-left: 18px; color: var(--muted); font-size: 14px; }
+.tag { display: inline-block; font-size: 12px; padding: 1px 8px; border-radius: 6px; }
+.tag.move { background: var(--teal-soft); color: var(--teal); }
+.tag.q { background: var(--gold-soft); color: var(--gold); }
+
+.place { width: 100%; max-width: 380px; aspect-ratio: 16 / 10; object-fit: cover; border-radius: 14px; display: block; box-shadow: var(--shadow); margin-top: 4px; }
+
+.pickone { font-size: 12px; color: var(--gold); font-family: var(--display); margin-top: 2px; }
+.eats { display: grid; gap: 10px; width: 100%; }
+.eat { display: grid; grid-template-columns: 92px 1fr; gap: 12px; align-items: start; background: var(--surface); border-radius: 14px; padding: 8px; box-shadow: var(--shadow); }
+.eat img { width: 92px; height: 92px; object-fit: cover; border-radius: 10px; display: block; }
+.eat .t { min-width: 0; padding-top: 2px; }
+.eat.noimg { grid-template-columns: 1fr; padding: 10px 14px; border-left: 4px solid var(--gold); }
+.eat h4 { font-family: var(--display); font-weight: 500; font-size: 15px; margin: 0; line-height: 1.3; }
+.eat .where { font-size: 12px; color: var(--teal); }
+.eat p { margin: 2px 0 0; font-size: 13px; color: var(--muted); line-height: 1.5; }
+.eat .chips { display: flex; flex-wrap: wrap; gap: 4px; margin-top: 4px; }
+.eat .chips span { font-size: 11px; padding: 0 7px; border-radius: 6px; background: var(--gold-soft); color: var(--gold); }
+.eat.sweet .chips span { background: var(--red-soft); color: var(--red); }
+
+.hotel { margin-top: 16px; display: grid; grid-template-columns: 120px 1fr; gap: 14px; align-items: center; background: var(--surface); border-radius: 14px; padding: 10px; box-shadow: var(--shadow); }
+.hotel img { width: 120px; height: 84px; object-fit: cover; border-radius: 10px; display: block; }
+.hotel h3 { font-family: var(--display); font-weight: 500; margin: 0; font-size: 16px; }
+.hotel p { margin: 2px 0 0; font-size: 13px; color: var(--muted); }
+
+footer { margin-top: 56px; font-size: 13px; color: var(--muted); border-top: 1px solid var(--line); padding-top: 16px; }
+@media (max-width: 520px) {
+  .tl > li { grid-template-columns: 1fr; gap: 4px; }
+  .eat { grid-template-columns: 76px 1fr; } .eat img { width: 76px; height: 76px; }
+  .hotel { grid-template-columns: 96px 1fr; } .hotel img { width: 96px; height: 72px; }
+}
+</style>
+</head>
+<body>
+
+<div class="wrap">
+<header class="hero">
+  <p class="eyebrow">แพลนเที่ยว 24–27 พ.ย. 2569 ♥</p>
+  <h1>Singapore</h1>
+  <ul class="facts">
+    <li><b>4 วัน 3 คืน</b></li>
+    <li>ที่พัก <b>lyf Bugis</b></li>
+    <li>ขาไป <b>07.45</b> · ขากลับ <b>21.00</b></li>
+  </ul>
+  <nav aria-label="ไปที่วัน">
+    <a href="#day1">วันที่ 1</a><a href="#day2">วันที่ 2</a><a href="#day3">วันที่ 3</a><a href="#day4">วันที่ 4</a>
+  </nav>
+</header>
+
+<!-- ============ DAY 1 ============ -->
+<section id="day1">
+  <div class="dayhead"><span class="n">วันที่ 1</span><h2>ถึงสิงคโปร์ · Bugis · Marina Bay · Orchard</h2><span class="date">อ. 24/11/69</span></div>
+  <ol class="tl">
+    <li><span class="time">04.00–05.00</span><div class="what"><h3>ถึงสนามบิน (ไทย)</h3><p>เครื่องขึ้น 07.45 น.</p></div></li>
+    <li><span class="time">11.15</span><div class="what"><h3>ถึงสิงคโปร์ – Changi</h3><p>ถ่ายรูปเล่นสนามบิน + Jewel Christmas</p>
+      <img class="place" src="img/jewel.jpg" alt="น้ำตก Rain Vortex ใน Jewel Changi"></div></li>
+    <li><span class="time">≈ 12.00</span><div class="what"><h3>ออกจากสนามบิน ไปโรงแรม</h3>
+      <ul><li>MRT ประมาณ 45 นาที (~5 SGD)</li><li>แท็กซี่ ประมาณ 20 นาที (~20 SGD)</li></ul></div></li>
+    <li><span class="time">≈ 14.00</span><div class="what"><h3>ถึงโรงแรม ฝากกระเป๋า</h3>
+      <div class="hotel"><img src="img/hotel.jpg" alt="โรงแรม lyf Bugis"><div><h3>lyf Bugis Singapore</h3><p>200 Middle Rd, Singapore 188980 · จองแล้ว 24–27 พ.ย.</p></div></div></div></li>
+    <li><span class="time">→ 15.00</span><div class="what"><h3>① ข้าวเที่ยง + ของหวาน</h3><p>เดินจากโรงแรมประมาณ 12 นาที · ออกจากร้าน 15.00 น.</p>
+      <div class="eats">
+        <div class="eat"><img src="img/curry.jpg" alt="ข้าวแกงกะหรี่ปลาทอด"><div class="t"><h4>Curry Fish Fillet Rice</h4><span class="where">ฟู้ดคอร์ท Bugis Junction</span><p>ข้าวราดแกงกะหรี่ปลาทอด จานใหญ่ อิ่มมาก</p><div class="chips"><span>2 จาน 14.32 SGD</span><span>น้ำแก้วละ 1 SGD</span></div></div></div>
+        <div class="eat sweet"><img src="img/birds.jpg" alt="ไอศกรีม Birds of Paradise"><div class="t"><h4>Birds of Paradise</h4><span class="where">Arab St / Beach Rd</span><p>เจลาโต้กลิ่นดอกไม้ แนะนำสตรอว์เบอร์รี กับ White Chrysanthemum โคนหอมไทม์ ร้านสวยถ่ายรูปได้</p><div class="chips"><span>ของหวาน</span><span>Michelin Guide</span></div></div></div>
+      </div>
+      <span class="tag move">เดิน 15 นาที</span></div></li>
+    <li><span class="time">15.30–16.00</span><div class="what"><h3>② Old Hill Street Police Station</h3><p>ตึกหน้าต่างสีรุ้ง ถ่ายรูป</p>
+      <img class="place" src="img/oldhill.jpg" alt="ตึก Old Hill Street Police Station หน้าต่างหลากสี">
+      <span class="tag move">15 นาที</span></div></li>
+    <li><span class="time">16.20</span><div class="what"><h3>③ กลับโรงแรม Check-in</h3></div></li>
+    <li><span class="time">17.00–18.30</span><div class="what"><h3>④ Marina Bay Sands</h3><p>รอบแสงไฟ</p>
+      <img class="place" src="img/mbs.jpg" alt="Marina Bay Sands ตอนค่ำ"></div></li>
+    <li><span class="time">18.30–19.00</span><div class="what"><h3>มื้อเย็น</h3><p>มีเวลาราวครึ่งชั่วโมงก่อนไป Gardens เลยเน้นฟู้ดคอร์ทที่กินเร็ว</p><span class="pickone">เลือก 1 ที่</span>
+      <div class="eats">
+        <div class="eat"><img src="img/rasapura.jpg" alt="ฟู้ดคอร์ท Rasapura Masters"><div class="t"><h4>Rasapura Masters</h4><span class="where">ชั้นใต้ดิน The Shoppes at Marina Bay Sands</span><p>ฟู้ดคอร์ทใหญ่ในห้าง MBS มีหลายร้านให้เลือก อยู่ตรงนั้นพอดีไม่ต้องเดินไกล</p><div class="chips"><span>กินเร็ว</span><span>ฟู้ดคอร์ท</span></div></div></div>
+        <div class="eat"><img src="img/satay.jpg" alt="สะเต๊ะสิงคโปร์"><div class="t"><h4>Satay by the Bay</h4><span class="where">ใน Gardens by the Bay</span><p>ศูนย์อาหารแบบฮอว์กเกอร์ มีสะเต๊ะ ไปกินหลังดูไฟจบก็ได้ แล้วค่อยไป Orchard ช้าลงหน่อย</p><div class="chips"><span>สะเต๊ะ</span><span>ฮอว์กเกอร์</span></div></div></div>
+      </div></div></li>
+    <li><span class="time">19.00–20.30</span><div class="what"><h3>⑤ Gardens by the Bay – Christmas</h3><p>รอบแสงไฟ</p>
+      <img class="place" src="img/gardens_night.jpg" alt="Supertree Grove ตอนกลางคืน"></div></li>
+    <li><span class="time">≈ 21.00</span><div class="what"><h3>⑥ Orchard Road</h3><p>เดินดูไฟคริสต์มาส</p>
+      <img class="place" src="img/orchard.jpg" alt="ไฟคริสต์มาสบนถนน Orchard"></div></li>
+    <li><span class="time">ปิดวัน</span><div class="what"><h3>⑦ กลับโรงแรม</h3></div></li>
+  </ol>
+</section>
+
+<!-- ============ DAY 2 ============ -->
+<section id="day2">
+  <div class="dayhead"><span class="n">วันที่ 2</span><h2>Universal Studios · Sentosa</h2><span class="date">พ. 25/11/69</span></div>
+  <p class="note">Universal เปิด 10.00 น. · เดินทางจากที่พักประมาณ 30 นาที</p>
+  <ol class="tl">
+    <li><span class="time">เช้า</span><div class="what"><h3>① อาหารเช้า</h3>
+      <div class="eats">
+        <div class="eat"><img src="img/yakun.jpg" alt="ชุดขนมปังคายา ไข่ลวก ชานม"><div class="t"><h4>Ya Kun Kaya Toast</h4><span class="where">Bugis Junction</span><p>ขนมปังปิ้งคายา ไข่ลวก ชานมอร่อยมาก รีวิวให้ 5/5</p><div class="chips"><span>~11.2 SGD / 2 คน</span></div></div></div>
+      </div></div></li>
+    <li><span class="time">10.00</span><div class="what"><h3>② Universal Studios Singapore</h3>
+      <img class="place" src="img/universal.jpg" alt="ลูกโลก Universal Studios"></div></li>
+    <li><span class="time">ต่อ</span><div class="what"><h3>③ Sentosa</h3>
+      <img class="place" src="img/sentosa.jpg" alt="ชายหาด Siloso บน Sentosa"></div></li>
+    <li><span class="time">เย็น</span><div class="what"><h3>④ มื้อเย็นที่ VivoCity</h3><p>อยู่ทางออกจาก Sentosa พอดี แวะกินก่อนกลับ</p>
+      <div class="eats">
+        <div class="eat"><img src="img/lenu.jpg" alt="บะหมี่หมูตุ๋น"><div class="t"><h4>LeNu Chef Wai's Noodle Bar</h4><span class="where">VivoCity</span><p>บะหมี่ลาเมียนเส้นสด ซุปกระดูกเข้มข้น บะหมี่หมูตุ๋น เกี๊ยวหมู ไก่ทอดก็อร่อย</p><div class="chips"><span>บะหมี่</span></div></div></div>
+      </div></div></li>
+    <li><span class="time">ปิดวัน</span><div class="what"><h3>⑤ กลับที่พัก</h3></div></li>
+  </ol>
+</section>
+
+<!-- ============ DAY 3 ============ -->
+<section id="day3">
+  <div class="dayhead"><span class="n">วันที่ 3</span><h2>Harry Potter · Marina Bay · Chinatown · Bugis</h2><span class="date">พฤ. 26/11/69</span></div>
+  <ol class="tl">
+    <li><span class="time">เช้า</span><div class="what"><h3>① อาหารเช้า</h3>
+      <div class="eats">
+        <div class="eat"><img src="img/victor.jpg" alt="ฮะเก๋ากุ้ง"><div class="t"><h4>Victor's Kitchen</h4><span class="where">Bras Basah · ใกล้โรงแรม</span><p>ติ่มซำร้านดัง ฮะเก๋า เต้าหู้ทอด ซาลาเปาไข่เค็มลาวา</p><div class="chips"><span>ติ่มซำ</span></div></div></div>
+      </div></div></li>
+    <li><span class="time">11.00–13.00</span><div class="what"><h3>② Harry Potter (เปิด 10.00 น.)</h3><p>ไปถึง 10.30 น. · เข้ารอบ 11.00 น.</p></div></li>
+    <li><span class="time">14.00–15.00</span><div class="what"><h3>③ Marina Bay + Merlion</h3><p>เดินเล่น ถ่ายรูป</p>
+      <img class="place" src="img/merlion.jpg" alt="เมอร์ไลออนริมอ่าว Marina Bay"></div></li>
+    <li><span class="time">15.30–16.30</span><div class="what"><h3>④ Gardens by the Bay (ตอนกลางวัน)</h3>
+      <img class="place" src="img/gardens_day.jpg" alt="Supertree Grove ตอนกลางวัน"></div></li>
+    <li><span class="time">เย็น</span><div class="what"><h3>⑤ มื้อเย็นที่ Chinatown</h3>
+      <img class="place" src="img/chinatown.jpg" alt="ถนน Pagoda Street ใน Chinatown"><span class="pickone">เลือก 1 ร้าน</span>
+      <div class="eats">
+        <div class="eat"><img src="img/hawker.jpg" alt="ข้าวไก่ซีอิ๊ว"><div class="t"><h4>Hawker Chan</h4><span class="where">Chinatown</span><p>ข้าว/บะหมี่ไก่ซีอิ๊ว หมูแดง เส้นบะหมี่เหนียวนุ่ม</p><div class="chips"><span>พกทิชชู่เปียก</span></div></div></div>
+        <div class="eat"><img src="img/zhang.jpg" alt="หม่าล่า"><div class="t"><h4>Zhangliang Mala</h4><span class="where">Chinatown</span><p>หม่าล่าตักเองชั่งน้ำหนัก น้ำจิ้มตักฟรี</p><div class="chips"><span>หม่าล่า</span></div></div></div>
+        <div class="eat"><img src="img/mustache.jpg" alt="ปิ้งย่างเสียบไม้"><div class="t"><h4>Mustache BBQ</h4><span class="where">Chinatown</span><p>ปิ้งย่างเสียบไม้สไตล์จีน ปลาต้มผักดอง ถั่วฝักยาวผัดพริกแห้ง</p><div class="chips"><span>ปิ้งย่าง</span></div></div></div>
+      </div></div></li>
+    <li><span class="time">ค่ำ</span><div class="what"><h3>⑥ Bugis Street + ของหวาน</h3><p>เดินเล่น ซื้อของฝาก แล้วปิดท้ายด้วยของหวาน</p>
+      <img class="place" src="img/bugis.jpg" alt="ตลาด Bugis Street"><span class="pickone">เลือก 1 ร้าน</span>
+      <div class="eats">
+        <div class="eat sweet"><img src="img/aifo.jpg" alt="เจลาโต้พิสตาชิโอราดเอสเปรสโซ"><div class="t"><h4>AiFO KATO</h4><span class="where">แถว Bugis</span><p>Pistachio Gelato ราด Espresso ขม ๆ ตัดหวานลงตัว</p><div class="chips"><span>ที่นั่งน้อย ยืนกิน</span></div></div></div>
+        <div class="eat sweet"><img src="img/venchi.jpg" alt="เจลาโต้ Venchi"><div class="t"><h4>Venchi</h4><span class="where">แถว Bugis</span><p>เจลาโต้และช็อกโกแลตอิตาลี เคลือบช็อกโกแลตในโคน</p><div class="chips"><span>เจลาโต้</span></div></div></div>
+      </div></div></li>
+  </ol>
+</section>
+
+<!-- ============ DAY 4 ============ -->
+<section id="day4">
+  <div class="dayhead"><span class="n">วันที่ 4</span><h2>City Hall · Suntec · กลับบ้าน</h2><span class="date">ศ. 27/11/69</span></div>
+  <p class="note">เครื่องขึ้น 21.00 น. ควรถึง Changi ราว 18.00 น. เช็กเอาต์แล้วฝากกระเป๋าไว้ที่โรงแรมก่อนออกเที่ยว</p>
+  <ol class="tl">
+    <li><span class="time">เช้า</span><div class="what"><h3>อาหารเช้า</h3><p>Ya Kun อีกรอบ รีวิวบอกกินทุกเช้าก็ไม่เบื่อ</p>
+      <div class="eats">
+        <div class="eat"><img src="img/yakun.jpg" alt="ชุดขนมปังคายา ไข่ลวก ชานม"><div class="t"><h4>Ya Kun Kaya Toast</h4><span class="where">Bugis Junction · ใกล้โรงแรม</span><p>ขนมปังปิ้งคายา ไข่ลวก ชานม</p><div class="chips"><span>~11.2 SGD / 2 คน</span></div></div></div>
+      </div></div></li>
+    <li><span class="time">ต่อ</span><div class="what"><h3>① National Gallery Singapore</h3><p>MRT City Hall · Exit B</p>
+      <img class="place" src="img/ngallery.jpg" alt="ภายใน National Gallery Singapore"></div></li>
+    <li><span class="time">ต่อ</span><div class="what"><h3>② Fountain of Wealth</h3><p>MRT Promenade · Exit C</p>
+      <img class="place" src="img/fountain.jpg" alt="น้ำพุ Fountain of Wealth ที่ Suntec City"></div></li>
+    <li><span class="time">เที่ยง–บ่าย</span><div class="what"><h3>③ ข้าวเที่ยง + ของหวาน แถว Clarke Quay</h3><p>2 ร้านนี้อยู่ใกล้กัน เดินจาก MRT Clarke Quay ประมาณ 5 นาที</p>
+      <span class="tag move">จาก Suntec นั่งแท็กซี่ประมาณ 10 นาที</span>
+      <div class="eats">
+        <div class="eat"><img src="img/ngahsio.jpg" alt="บักกุ๊ดเต๋"><div class="t"><h4>Ng Ah Sio Bak Kut Teh</h4><span class="where">สาขา Clarke Quay Central · 6 Eu Tong Sen St</span><p>บักกุ๊ดเต๋น้ำซุปพริกไทยแบบแต้จิ๋ว ตัวเด็ดคือ Premium Loin Rib</p><div class="chips"><span>Since 1955</span><span>เช็กเวลาเปิดก่อนไป</span></div></div></div>
+        <div class="eat sweet"><img src="img/dopa.jpg" alt="เจลาโต้บนวาฟเฟิล"><div class="t"><h4>Dopa Dopa</h4><span class="where">29 South Bridge Rd · ใกล้ Clarke Quay</span><p>เจลาโต้เนื้อแน่น ละมุน กินกับวาฟเฟิลอบใหม่ เปิดประมาณเที่ยงถึง 4 ทุ่ม</p><div class="chips"><span>Michelin Recommended</span></div></div></div>
+      </div>
+      <span class="tag q">Champion Bolo Bun มีสาขาเดียวที่ Tanjong Pagar ไกลจากแผนวันนี้ เลยไม่ได้ใส่</span></div></li>
+    <li><span class="time">≈ 16.45</span><div class="what"><h3>④ กลับโรงแรม รับกระเป๋า</h3></div></li>
+    <li><span class="time">≈ 17.00</span><div class="what"><h3>⑤ ออกเดินทางไปสนามบิน</h3><span class="tag move">MRT ~45 นาที / แท็กซี่ ~20 นาที</span></div></li>
+    <li><span class="time">≈ 18.00</span><div class="what"><h3>⑥ ถึง Changi เช็กอิน</h3><p>กินข้าวในสนามบินก่อนขึ้นเครื่อง</p>
+      <div class="eats">
+        <div class="eat sweet"><img src="img/llao.jpg" alt="โฟรเซนโยเกิร์ต llaollao"><div class="t"><h4>llaollao</h4><span class="where">Changi Terminal 3</span><p>ไอติมโยเกิร์ต เลือกท็อปปิ้งได้ 2 อย่าง รีวิวบอกห้ามพลาด</p><div class="chips"><span>~5 SGD</span><span>ดูก่อนว่าบินออก T3 ไหม</span></div></div></div>
+      </div></div></li>
+    <li><span class="time">21.00</span><div class="what"><h3>⑦ เครื่องออก กลับไทย ✈</h3></div></li>
+  </ol>
+</section>
+
+<footer>ถอดจากโน้ตลายมือและรีวิวร้านที่บันทึกไว้ · รูปร้านจากโพสต์รีวิว ใช้ดูกันเองในทริป
+  <br>รูปสถานที่จาก Wikimedia Commons (CC BY-SA): Diego Delso (Marina Bay Sands), Kanzcech (Supertree Grove กลางคืน), Johan Jönsson (Supertree Grove กลางวัน), Dietmar Rabich (Merlion), Sgconlaw (Orchard Road), kallerna (Jewel Changi, Chinatown), Moheen Reeyad (Sentosa), Basile Morin (National Gallery), Bijay Chaurasia (Fountain of Wealth), Adjoajo (Bugis Street), RAGURAM RAMESHKUMAR (Rasapura Masters), Ypsilon from Finland (สะเต๊ะ, CC0), GoAheadFan95 (Old Hill Street), Moheen Reeyad (Universal Studios)</footer>
+</div>
+</body>
+</html>
